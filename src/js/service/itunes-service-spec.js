@@ -1,5 +1,5 @@
 import search from "./itunes-service";
-import * as request from "./api-xhr-request";
+import * as request from "../request/api-xhr-request";
 import {URLBuilder} from "./url-builder";
 
 const url = 'testUrl';

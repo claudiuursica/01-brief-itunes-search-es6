@@ -15,7 +15,7 @@ const fetchJSONP = (unique => url =>
     
     script.src = url;
     window[name] = json => {
-      console.log("should resolve() name = ", name)
+      console.log("should resolve() name = ", name);
       rs(new Response(JSON.stringify(json)));
       script.remove();
       delete window[name];

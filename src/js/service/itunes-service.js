@@ -1,18 +1,18 @@
 'use strict';
 
-import makeRequest from './api-xhr-request';
-import {URLBuilder} from "./url-builder";
-import fetchJSONP from './api-jsonp-request';
+import makeRequest from '../request/api-xhr-request';
+import fetchJSONP from '../request/api-jsonp-request';
+import { URLBuilder } from "./url-builder";
 
 /**
  * @param {string} query
  * @return {Promise}
  */
 export function search(query) {
-	const url = URLBuilder.buildURL(query);
-	
-	return makeRequest({url: url})
-		.then(data => data = JSON.parse(data));
+  const url = URLBuilder.buildURL(query);
+
+  return makeRequest({url: url})
+    .then(data => data = JSON.parse(data));
 }
 
 /**
@@ -20,7 +20,7 @@ export function search(query) {
  * @return {Promise}
  */
 export function searchJSONP(query) {
-	const url = URLBuilder.buildURL(query);
-	
-	return fetchJSONP(url).then(response => response.json());
+  const url = URLBuilder.buildURL(query);
+
+  return fetchJSONP(url).then(response => response.json());
 }
