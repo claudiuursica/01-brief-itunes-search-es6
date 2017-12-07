@@ -1,6 +1,6 @@
 'use strict';
 
-const fetchJSONP = (unique => url =>
+export const makeJSONPRequest = (unique => url =>
   new Promise(rs => {
     const script = document.createElement('script');
     const name = `_jsonp_${unique++}`;
@@ -11,8 +11,6 @@ const fetchJSONP = (unique => url =>
       url += `?callback=${name}`;
     }
     
-    console.log("url = ", url);
-    
     script.src = url;
     window[name] = json => {
       console.log("should resolve() name = ", name);
@@ -22,6 +20,4 @@ const fetchJSONP = (unique => url =>
     };
     
     document.body.appendChild(script);
-  }))(0);
-
-export default fetchJSONP;
+}))(0);
