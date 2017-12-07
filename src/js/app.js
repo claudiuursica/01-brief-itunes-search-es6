@@ -36,19 +36,23 @@ const doSearch = (query) => {
 	      const indexHeaderElement = document.createElement('span');
 	      liHeaderElement.appendChild(indexHeaderElement);
 	
-	      const songHeaderElement = document.createElement('span');
-	      songHeaderElement.innerHTML = 'SONG';
-	      songHeaderElement.classList.add('item');
+	      const createSpanElement = (text, className = '') => {
+		      const spanElement = document.createElement('span');
+		      spanElement.innerHTML = text;
+		      if (className) {
+			      spanElement.classList.add(className);
+		      }
+		      
+		      return spanElement;
+	      };
+	      
+	      const songHeaderElement = createSpanElement('SONG', 'item');
 	      liHeaderElement.appendChild(songHeaderElement);
 	
-	      const artistHeaderElement = document.createElement('span');
-	      artistHeaderElement.innerHTML = 'ARTIST';
-	      artistHeaderElement.classList.add('item');
+	      const artistHeaderElement = createSpanElement('ARTIST', 'item');
 	      liHeaderElement.appendChild(artistHeaderElement);
 	
-	      const albumHeaderElement = document.createElement('span');
-	      albumHeaderElement.innerHTML = 'ALBUM';
-	      albumHeaderElement.classList.add('item');
+	      const albumHeaderElement = createSpanElement('ALBUM', 'item');
 	      liHeaderElement.appendChild(albumHeaderElement);
 	
 	      ulElement.appendChild(liHeaderElement);
@@ -56,23 +60,16 @@ const doSearch = (query) => {
         results.forEach((item, index) => {
           const liElement = document.createElement('li');
 	
-	        const indexElement = document.createElement('span');
-	        indexElement.innerHTML = index + 1;
+	        const indexElement = createSpanElement(index + 1);
 	        liElement.appendChild(indexElement);
 	
-	        const songElement = document.createElement('span');
-	        songElement.innerHTML = item.trackName;
-	        songElement.classList.add('item');
+	        const songElement = createSpanElement(item.trackName, 'item');
 	        liElement.appendChild(songElement);
 	
-	        const artistElement = document.createElement('span');
-	        artistElement.innerHTML = item.artistName;
-	        artistElement.classList.add('item');
+	        const artistElement = createSpanElement(item.artistName, 'item');
 	        liElement.appendChild(artistElement);
 	
-	        const albumElement = document.createElement('span');
-	        albumElement.innerHTML = item.collectionName;
-	        artistElement.classList.add('item');
+	        const albumElement = createSpanElement(item.collectionName, 'item');
 	        liElement.appendChild(albumElement);
 	
           ulElement.appendChild(liElement);
