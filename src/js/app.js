@@ -1,6 +1,6 @@
 'use strict';
 
-import { searchJSONP } from './service/itunes-service';
+import { searchJSONP } from 'service/itunes-service';
 
 const searchInputElement = document.getElementById('searchInput');
 const searchResultElement = document.getElementById('searchResults');
