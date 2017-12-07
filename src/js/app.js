@@ -46,6 +46,7 @@ const doSearch = (query) => {
 		      return spanElement;
 	      };
 	      
+				
 	      const songHeaderElement = createSpanElement('SONG', 'item');
 	      liHeaderElement.appendChild(songHeaderElement);
 	
