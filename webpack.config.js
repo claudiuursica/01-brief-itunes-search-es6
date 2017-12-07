@@ -4,37 +4,50 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+console.log("bubu: ", path.resolve(__dirname, 'src/js/service'));
+
 // Constant with our paths
 const paths = {
-  DIST: path.resolve(__dirname, 'dist'),
-  SRC: path.resolve(__dirname, 'src'),
-  JS: path.resolve(__dirname, 'src/js'),
+	DIST: path.resolve(__dirname, 'dist'),
+	SRC : path.resolve(__dirname, 'src'),
+	JS  : path.resolve(__dirname, 'src/js'),
+	APP : {
+		ROOT    : path.resolve(__dirname, 'src/js'),
+		REQUEST: path.resolve(__dirname, 'src/js/request'),
+		SERVICE: path.resolve(__dirname, 'src/js/service')
+	}
 };
 
 // Webpack configuration
 module.exports = {
-  entry: path.join(paths.JS, 'app.js'),
-  output: {
-    path: paths.DIST,
-    filename: 'app.bundle.js'
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(paths.SRC, 'index.html'),
-    }),
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        use: [
-          'babel-loader',
-        ],
-      },
-    ],
-  },
-  resolve: {
-    extensions: ['.js'],
-  },
+	entry  : path.join(paths.JS, 'app.js'),
+	context: paths.SRC,
+	output : {
+		path    : paths.DIST,
+		filename: 'app.bundle.js'
+	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: path.join(paths.SRC, 'index.html'),
+		}),
+	],
+	module : {
+		rules: [
+			{
+				test   : /\.(js)$/,
+				exclude: /node_modules/,
+				use    : [
+					'babel-loader',
+				],
+			},
+		],
+	},
+	resolve: {
+		extensions: ['.js'],
+		alias     : {
+			app    : paths.APP.ROOT,
+			request: paths.APP.REQUEST,
+			service: paths.APP.SERVICE
+		}
+	},
 };
