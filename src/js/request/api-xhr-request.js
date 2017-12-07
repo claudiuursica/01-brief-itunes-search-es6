@@ -6,7 +6,7 @@ const REQUEST_METHOD_GET = 'GET';
  * @param {Object} request
  * @return {Promise}
  */
-export default function makeRequest(request) {
+export function makeRequest(request) {
   /**
    * @param {Function} resolve
    * @param {Function} reject
