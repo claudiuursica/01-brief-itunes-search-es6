@@ -4,8 +4,6 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-console.log("bubu: ", path.resolve(__dirname, 'src/js/service'));
-
 // Constant with our paths
 const paths = {
 	DIST: path.resolve(__dirname, 'dist'),
