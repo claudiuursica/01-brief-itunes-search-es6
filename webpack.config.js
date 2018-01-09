@@ -4,15 +4,19 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+console.log("bubu: ", path.resolve(__dirname, 'src/js/service'));
+
 // Constant with our paths
 const paths = {
 	DIST: path.resolve(__dirname, 'dist'),
 	SRC : path.resolve(__dirname, 'src'),
 	JS  : path.resolve(__dirname, 'src/js'),
 	APP : {
-		ROOT    : path.resolve(__dirname, 'src/js'),
+		ROOT   : path.resolve(__dirname, 'src/js'),
 		REQUEST: path.resolve(__dirname, 'src/js/request'),
-		SERVICE: path.resolve(__dirname, 'src/js/service')
+		SERVICE: path.resolve(__dirname, 'src/js/service'),
+		VIEW   : path.resolve(__dirname, 'src/js/view'),
+		DOMAIN : path.resolve(__dirname, 'src/js/domain')
 	}
 };
 
@@ -45,7 +49,9 @@ module.exports = {
 		alias     : {
 			app    : paths.APP.ROOT,
 			request: paths.APP.REQUEST,
-			service: paths.APP.SERVICE
+			service: paths.APP.SERVICE,
+			view   : paths.APP.VIEW,
+			domain : paths.APP.DOMAIN,
 		}
 	},
 };
