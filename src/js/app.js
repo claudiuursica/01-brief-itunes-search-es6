@@ -3,7 +3,7 @@
 import {searchJSONP} from 'service/itunes-service';
 
 import {createSpanElement, createListItemElement} from "app/view/view-factory";
-import {ITunesPagedCollection} from "domain/ITunesPagedCollection";
+import {ITunesPagedCollection} from "domain/itunes-paged-collection";
 
 const searchInputElement = document.getElementById('searchInput');
 const searchResultElement = document.getElementById('searchResults');
