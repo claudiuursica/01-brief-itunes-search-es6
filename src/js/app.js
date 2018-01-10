@@ -2,7 +2,7 @@
 
 import {searchJSONP} from 'service/itunes-service';
 
-import {createSpanElement, createListItemElement} from "app/view/view-factory";
+import {renderData} from "view/view-factory";
 import {ITunesPagedCollection} from "domain/itunes-paged-collection";
 
 const searchInputElement = document.getElementById('searchInput');
@@ -30,73 +30,27 @@ const doSearch = (query) =>
 	{
 		console.log("data = ", data);
 		
-		function createListHeader(parentElement)
-		{
-			const headerConfig = [
-				{
-					label    : '',
-					className: ''
-				},
-				{
-					label    : 'SONG',
-					className: 'item'
-				},
-				{
-					label    : 'ARTIST',
-					className: 'item'
-				},
-				{
-					label    : 'ALBUM',
-					className: 'item'
-				}
-			];
-			
-			headerConfig.forEach((headerItemConfig) => {
-				const headerElement = createSpanElement(headerItemConfig.label, headerItemConfig.className);
-				parentElement.appendChild(headerElement);
-			});
-			
-			// const indexHeaderElement = createSpanElement('', '');
-			// parentElement.appendChild(indexHeaderElement);
-			//
-			// const songHeaderElement = createSpanElement('SONG', 'item');
-			// parentElement.appendChild(songHeaderElement);
-			//
-			// const artistHeaderElement = createSpanElement('ARTIST', 'item');
-			// parentElement.appendChild(artistHeaderElement);
-			//
-			// const albumHeaderElement = createSpanElement('ALBUM', 'item');
-			// parentElement.appendChild(albumHeaderElement);
-		}
-
 		//todo clean table
 		if (data && data.results)
 		{
 			
-			const results = data.results;
+			const results = data.results.map((item, index) =>
+			{
+				return {
+					index         : index + 1,
+					trackName     : item.trackName,
+					artistName    : item.artistName,
+					collectionName: item.collectionName
+				}
+			});
 			
-			//check for length and show no results message
+			//todo check for length and show no results message
 			if (results)
 			{
-				//list
-				const ulElement = document.createElement('ul');
-				
-				//header
-				const liHeaderElement = document.createElement('li');
-				createListHeader(liHeaderElement);
-				ulElement.appendChild(liHeaderElement);
-				
 				itemsCollection.setItems(results);
 				console.log("itemsCollection = ", itemsCollection.pageItemsList);
 				
-				
-				results.forEach((item, index) =>
-				{
-					const liElement = createListItemElement(item, 'item');
-					ulElement.appendChild(liElement);
-				});
-				
-				searchResultElement.appendChild(ulElement);
+				searchResultElement.appendChild(renderData(results));
 			}
 		}
 	}).catch(error =>
