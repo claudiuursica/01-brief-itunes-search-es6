@@ -44,6 +44,8 @@ const doSearch = (query) =>
 				}
 			});
 			
+			console.log("results = ", results);
+			
 			//todo check for length and show no results message
 			if (results)
 			{
