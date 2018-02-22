@@ -10,7 +10,7 @@ describe('Function: buildURL', () => {
   it('should return the search urls when arguments are valid', () => {
 
     const searchOptions = 'jack johnson';
-    const expectedResult = 'https://itunes.apple.com/search?term=jack+johnson&limit=10';
+    const expectedResult = 'https://itunes.apple.com/search?term=jack+johnson&limit=200&media=music';
 
     expect(buildURL(searchOptions)).toBe(expectedResult);
   });
