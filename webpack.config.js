@@ -14,7 +14,8 @@ const paths = {
 		REQUEST: path.resolve(__dirname, 'src/js/request'),
 		SERVICE: path.resolve(__dirname, 'src/js/service'),
 		VIEW   : path.resolve(__dirname, 'src/js/view'),
-		DOMAIN : path.resolve(__dirname, 'src/js/domain')
+		DOMAIN : path.resolve(__dirname, 'src/js/domain'),
+		UTILS  : path.resolve(__dirname, 'src/js/utils')
 	}
 };
 
@@ -50,6 +51,7 @@ module.exports = {
 			service: paths.APP.SERVICE,
 			view   : paths.APP.VIEW,
 			domain : paths.APP.DOMAIN,
+			utils  : paths.APP.UTILS
 		}
 	},
 };
