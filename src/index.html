@@ -5,15 +5,79 @@
     <meta name="viewport" content="width=device-width">
     <title>Test</title>
     <style>
+        body {
+            font-family: Verdana;
+            font-size: 12px;
+            color: #666;
+        }
+
         .item {
-            width: 200px;
-            height: 30px;
-            padding: 0 5px;
+            width: 220px;
+            height: 15px;
             display: inline-block;
+            vertical-align: top;
         }
 
         ul {
             list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            border-top: #eee 1px solid;
+        }
+
+        #searchResults ul {
+            width: 75%;
+        }
+
+        .favourites {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            width: 200px;
+        }
+
+        .favourites h1 {
+            font-size: 14px;
+            background-color: #f9f8f8;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .favourites h2 {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .favourites span {
+            display: block;
+        }
+
+        .favourites li {
+            padding: 5px 0px;
+            border-top: #eee 1px solid;
+        }
+
+
+        .favourite {
+            display: flex;
+        }
+
+        .favourite img {
+            width: 30px;
+            height: 30px;
+            padding: 0 5px;
+        }
+
+        .favourite .song {
+            font-weight: bold;
+        }
+
+        .error {
+            padding: 10px;
+            color: #CC0000;
         }
     </style>
 </head>
@@ -24,6 +88,11 @@
             <button id="searchButton">Search</button>
         </div>
         <div id="searchResults"></div>
+        <div id="favourites" class="favourites">
+            <h1>Favourites</h1>
+            <h2>You have no favourites</h2>
+            <ul></ul>
+        </div>
     </div>
 </body>
 </html>
