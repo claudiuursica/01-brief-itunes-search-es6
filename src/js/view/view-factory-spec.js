@@ -107,9 +107,9 @@ describe('Function: createListHeaderElements', () => {
 	});
 });
 
-describe('Function: createListItemElement', () => {
+describe('Function: createMainListItemElement', () => {
 	it('should create an LI with content', () => {
-		const liChild = viewFactory.createListItemElement(BODY[0]);
+		const liChild = viewFactory.createMainListItemElement(BODY[0]);
 
 		runCreateListItemElementAsserts(liChild);
 	});
