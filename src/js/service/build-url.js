@@ -1,5 +1,5 @@
-import {BASE_API} from 'service/api';
-import {PAGE_SIZE} from 'service/api';
+import { BASE_API } from 'service/api';
+import { MAX_PAGE_SIZE } from 'service/api';
 
 /**
  * @param {string} searchString
@@ -7,5 +7,5 @@ import {PAGE_SIZE} from 'service/api';
  */
 export function buildURL(searchString) {
 	return searchString && searchString.length ?
-	  `${BASE_API}term=${searchString.split(' ').join('+')}&limit=${PAGE_SIZE}` : BASE_API;
+	  `${BASE_API}term=${searchString.split(' ').join('+')}&limit=${MAX_PAGE_SIZE}&media=music` : BASE_API;
 }
